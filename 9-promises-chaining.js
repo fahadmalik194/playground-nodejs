@@ -1,0 +1,36 @@
+console.log("Promises Chaining:")
+
+const add = (a, b) => {
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve(a + b)
+        }, 2000)
+    })
+}
+
+//Nested Promises get complex like below:
+
+// add(1,5).then((sum)=>{
+//     console.log(sum)
+
+//     add(sum, 6).then((sum2) => {
+//         console.log(sum2)
+//     }).catch((e) => {
+//         console.log(e)
+//     })
+
+// }).catch((e)=>{
+//     console.log(e)
+// })
+
+// By Using Promise Chaining: we can avioid nested promises
+
+add(1,1).then((sum) => {
+    console.log(sum)
+    return add(sum,4)
+}).then((sum2)=>{
+    console.log(sum2)
+}).catch((e) => {
+    console.log(e)
+})
+
